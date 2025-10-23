@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FitroniX | Gjenerator i Ushtrimeve Ditore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+
+
+
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #00ffe7;
+      background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)),
+                  url('img/fitness-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 32px;
+      color: #00ffe7;
+      letter-spacing: 1px;
+    }
+
+    select {
+      padding: 8px 32px 8px 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px;
+      background-color: #1a1a1a;
+      color: #00ffe7;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #00ffe7 50%),
+        linear-gradient(135deg, #00ffe7 50%, transparent 50%),
+        linear-gradient(to right, #1a1a1a, #1a1a1a);
+      background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px),
+        calc(100% - 25px) 0.5em;
+      background-size: 5px 5px, 5px 5px, 1px 1.5em;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    select:hover,
+    select:focus {
+      background-color: #1a1a1a;
+      color: #00ffe7;
+      outline: none;
+      box-shadow: 0 0 5px #00ffe7;
+      background-image:
+        linear-gradient(45deg, transparent 50%, #00ffe7 50%),
+        linear-gradient(135deg, #00ffe7 50%, transparent 50%),
+        linear-gradient(to right, #1a1a1a, #1a1a1a);
+    }
+
+    select::-ms-expand {
+      display: none;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+      margin: 10px;
+      background-color: #1a1a1a;
+      color: #00ffe7;
+      appearance: auto;
+      -webkit-appearance: number-input;
+    }
+
+    input[type="number"]:hover,
+    input[type="number"]:focus {
+      background-color: #1a1a1a;
+      color: #00ffe7;
+      outline: none;
+      box-shadow: 0 0 5px #00ffe7;
+    }
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: auto;
+      margin: 0; 
+    }
+
+    button {
+      background-color: #00bfa6;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      font-size: 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      margin: 5px;
+      user-select: none;
+    }
+
+    button:hover {
+      background-color: #009e8c;
+      transform: scale(1.05);
+    }
+
+    #challengeBox {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      text-align: left;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100px;
+    }
+
+    .challenge-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .challenge-list li {
+      padding: 5px 0;
+      color: #00ffe7;
+    }
+
+    .challenge-list li.completed {
+      text-decoration: line-through;
+      color: #00aa88;
+    }
+
+    .history {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    .history h2 {
+      color: #00ffe7;
+    }
+
+    .history-block {
+      background-color: rgba(0, 255, 255, 0.07);
+      border-left: 4px solid #00ffe7;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 10px 15px;
+      position: relative;
+    }
+
+    .history-icon {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 22px;
+      color: #00ffe7;
+      user-select: none;
+    }
+
+    .history-list {
+      list-style: none;
+      margin: 0;
+      padding-left: 25px;
+      white-space: pre-line;
+      color: #00ffe7;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      button, select, input[type="number"] {
+        width: 100%;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>FitroniX - Gjenerator i Ushtrimeve Ditore</h1>
+
+  <div class="category-selection">
+    <label for="category">Zgjedh Kategorin:</label>
+    <select id="category">
+      <option value="random">E rastësishme</option>
+      <option value="shpin">Shpin</option>
+      <option value="triceps">Triceps</option>
+      <option value="biceps">Biceps</option>
+      <option value="Kembe">Këmbë</option>
+    </select>
+
+    <label for="exerciseCount" id="exerciseCountLabel">Numri i Ushtrimeve (1-10):</label>
+    <input type="number" id="exerciseCount" min="1" max="10" value="1" />
+    <button id="generateBtn">Gjenero</button>
+  </div>
+
+  <div id="warningMessage" style="color:#ff4444; font-weight:bold; font-size:14px; margin-top:5px; visibility:hidden;">
+    Numri maksimal i ushtrimeve është 10 për kategorinë e zgjedhur.
+  </div>
+  
+
+  <div id="challengeBox">
+    <ul class="challenge-list" id="challengeList">
+      <li><em>Prek Gjenero për të marrë ushtrimin!</em></li>
+    </ul>
+  </div>
+
+  <div class="buttons">
+    <button id="completeBtn" title="Klik për të shënuar një ushtrim si të përfunduar, Mbaj për 2 sekonda për të shënuar të gjithë">✔ E Përfunduar</button>
+    <button id="skipBtn">⏭ Kalo</button>
+    <button id="favoriteBtn" title="Klik për të shtuar në të preferuara">⭐ E Preferuara</button>
+    <button id="saveHistoryBtn">💾 Ruaj Historinë</button>
+    <button id="clearHistoryBtn">♻ Fshij Historinë</button>
+  </div>
+
+  <div class="history">
+    <h2>📜 Historia e Ushtrimeve</h2>
+    <div id="historyList"></div>
+  </div>
+</div>
+
+<script>
+  const challenges = {
+    shpin: ["Deadlift", "Pull-Up", "Barbell Row", "Lat Pulldown", "Back Extension"],
+    triceps: ["Tricep Dip", "Overhead Extension", "Tricep Kickback", "Close-Grip Bench", "Cable Pushdown"],
+    biceps: ["Barbell Curl", "Hammer Curl", "Concentration Curl", "Cable Curl", "Preacher Curl"],
+    Kembe: ["Squat", "Lunge", "Leg Press", "Deadlift", "Calf Raise"],
+  };
+
+  const categorySelect = document.getElementById("category");
+  const exerciseCountInput = document.getElementById("exerciseCount");
+  const generateBtn = document.getElementById("generateBtn");
+  const challengeList = document.getElementById("challengeList");
+  const completeBtn = document.getElementById("completeBtn");
+  const skipBtn = document.getElementById("skipBtn");
+  const favoriteBtn = document.getElementById("favoriteBtn");
+  const saveHistoryBtn = document.getElementById("saveHistoryBtn");
+  const clearHistoryBtn = document.getElementById("clearHistoryBtn");
+  const historyList = document.getElementById("historyList");
+
+  const warning = document.getElementById("exerciseCountWarning");
+
+
+  let currentChallenges = [];
+  let completedCount = 0;
+
+  // Add hold listener helper (button hold detection)
+  function addHoldListener(element, holdDurationMs, callback) {
+    let holdTimeout = null;
+    let isHeld = false;
+
+    element.addEventListener("mousedown", () => {
+      isHeld = false;
+      holdTimeout = setTimeout(() => {
+        isHeld = true;
+        callback(true);
+      }, holdDurationMs);
+    });
+
+    element.addEventListener("mouseup", () => {
+      clearTimeout(holdTimeout);
+      if (!isHeld) callback(false);
+    });
+
+    element.addEventListener("touchstart", () => {
+      isHeld = false;
+      holdTimeout = setTimeout(() => {
+        isHeld = true;
+        callback(true);
+      }, holdDurationMs);
+    });
+
+    element.addEventListener("touchend", () => {
+      clearTimeout(holdTimeout);
+      if (!isHeld) callback(false);
+    });
+  }
+ 
+  window.addEventListener("load", () => {
+  const maxAllowed = getMaxAllowed(categorySelect.value);
+  exerciseCountInput.max = maxAllowed;
+  validateExerciseCount();
+});
+
+    
+  // Shuffle array helper
+  function shuffle(array) {
+    let currentIndex = array.length, randomIndex;
+    while (currentIndex !== 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+      [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+    }
+    return array;
+  }
+
+  // Generate challenges based on selection
+  function generateChallenges() {
+    const category = categorySelect.value;
+    const count = Math.min(Math.max(parseInt(exerciseCountInput.value), 1), getMaxAllowed(category));
+
+
+    let sourceArray = [];
+
+    if (category === "random") {
+      // Combine all arrays and pick random
+      for (const cat in challenges) {
+        sourceArray = sourceArray.concat(challenges[cat]);
+      }
+    } else {
+      sourceArray = [...(challenges[category] || [])];
+    }
+
+    const uniqueSource = [...new Set(sourceArray)];
+    const shuffled = shuffle(uniqueSource);
+
+    currentChallenges = shuffled.slice(0, count);
+    completedCount = 0;
+    renderChallenges();
+  }
+
+  function getMaxAllowed(category) {
+  return category === "random" ? 10 : 5;
+}
+
+function validateExerciseCount() {
+  const category = categorySelect.value;
+  let val = parseInt(exerciseCountInput.value);
+  if (isNaN(val) || val < 1) val = 1;
+
+  const maxAllowed = getMaxAllowed(category);
+  if (val > maxAllowed) {
+    exerciseCountInput.value = maxAllowed;
+    warningMessage.textContent = `Numri maksimal i ushtrimeve është ${maxAllowed} për kategorinë e zgjedhur.`;
+    warningMessage.style.visibility = "visible";
+  } else {
+    warningMessage.style.visibility = "hidden";
+  }
+}
+
+  
+  function renderChallenges() {
+    challengeList.innerHTML = "";
+    if (currentChallenges.length === 0) {
+      const li = document.createElement("li");
+      li.innerHTML = "<em>Prek Gjenero për të marrë ushtrimin!</em>";
+      challengeList.appendChild(li);
+      return;
+    }
+    currentChallenges.forEach((challenge, idx) => {
+      const li = document.createElement("li");
+      li.textContent = challenge;
+      if (idx < completedCount) li.classList.add("completed");
+      challengeList.appendChild(li);
+    });
+  }
+
+  
+  function sendAllToHistory(icon) {
+    if (currentChallenges.length === 0) return;
+
+    const block = document.createElement("div");
+    block.className = "history-block";
+
+    const iconSpan = document.createElement("span");
+    iconSpan.className = "history-icon";
+    iconSpan.textContent = icon;
+    block.appendChild(iconSpan);
+
+    const ul = document.createElement("ul");
+    ul.className = "history-list";
+
+    currentChallenges.forEach(challenge => {
+      const li = document.createElement("li");
+      li.textContent = challenge;
+      ul.appendChild(li);
+    });
+
+    block.appendChild(ul);
+    historyList.prepend(block);
+
+    // Clear current challenges & reset state
+    currentChallenges = [];
+    completedCount = 0;
+    renderChallenges();
+  }
+
+  // Mark next workout as completed, auto-send if all done
+  function markNextCompleted() {
+    if (completedCount < currentChallenges.length) {
+      const li = challengeList.children[completedCount];
+      li.classList.add("completed");
+      completedCount++;
+
+      if (completedCount === currentChallenges.length) {
+        sendAllToHistory("✔");
+      }
+    }
+  }
+ 
+  categorySelect.addEventListener("change", () => {
+  const maxAllowed = getMaxAllowed(categorySelect.value);
+  exerciseCountInput.max = maxAllowed;
+  validateExerciseCount();
+});
+
+
+  // Skip button to generate new set without saving
+  skipBtn.addEventListener("click", () => {
+    generateChallenges();
+  });
+
+  // Generate button
+  generateBtn.addEventListener("click", () => {
+  validateExerciseCount();
+  generateChallenges();
+});
+
+
+  exerciseCountInput.addEventListener("input", () => {
+  validateExerciseCount();
+});
+
+
+  // Complete button with hold to send all
+  addHoldListener(completeBtn, 2000, (held) => {
+    if (held === undefined || held === false) {
+      // Single click marks next completed and auto-send if all done
+      markNextCompleted();
+    } else {
+      // Hold 2 sec sends all immediately
+      sendAllToHistory("✔");
+    }
+  });
+
+  // Favorite button sends all immediately, no hold
+  favoriteBtn.addEventListener("click", () => {
+    sendAllToHistory("⭐");
+  });
+
+  // Save history button (optional - can be extended)
+  saveHistoryBtn.addEventListener("click", () => {
+    alert("Funksioni i ruajtjes së historisë do të shtohet së shpejti!");
+  });
+
+  // Clear history button
+  clearHistoryBtn.addEventListener("click", () => {
+    if (confirm("A jeni i sigurt që doni të fshini historinë e ushtrimeve?")) {
+      historyList.innerHTML = "";
+    }
+  });
+
+  // Initialize on load
+  renderChallenges();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+
