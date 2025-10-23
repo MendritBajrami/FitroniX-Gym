@@ -256,10 +256,15 @@
 <div id="videoModal" style="
   display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.8); justify-content:center; align-items:center; z-index:9999;">
-  <video id="aboutUsVideo" width="80%" controls autoplay muted>
-    <source src="https://raw.githubusercontent.com/MendritBajrami/FitroniX-Gym/main/img/About-Us.Vid.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  
+  <!-- YouTube Embed -->
+  <iframe id="aboutUsVideo" width="80%" height="450" 
+          src="https://www.youtube.com/embed/F_fqEr_i8ds?autoplay=1" 
+          title="About Us Video" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+  </iframe>
+
   <span onclick="closeVideoPopup()" style="
     position:absolute; top:20px; right:40px; font-size:40px; color:white; cursor:pointer;">&times;</span>
 </div>
@@ -271,13 +276,14 @@ function openVideoPopup() {
 
 function closeVideoPopup() {
   const modal = document.getElementById('videoModal');
-  const video = document.getElementById('aboutUsVideo');
   modal.style.display = 'none';
-  video.pause();
-  video.currentTime = 0; // reset to start
+  const iframe = document.getElementById('aboutUsVideo');
+  // Stop YouTube video when modal closes
+  iframe.src = iframe.src;
 }
 </script>
 <!-- About US Section End -->
+
 
 
 
