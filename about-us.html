@@ -190,65 +190,75 @@
     </section>
     <!-- ChoseUs Section End -->
 
-    <!-- About US Section Begin -->
-    <section class="aboutus-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="about-video set-bg" data-setbg="img/about-us.jpg">
-                       <a href="img/About-Us.Vid.mp4" class="play-btn video-popup"><i class="fa fa-caret-right"></i></a>
-                    </div>
+  <!-- About US Section Begin -->
+<section class="aboutus-section">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Side: Video Section -->
+            <div class="col-lg-6 p-0">
+                <div class="about-video set-bg" style="background-image: url('img/about-us.jpg'); position: relative;">
+                    
+                    <!-- Hidden video that appears when play is clicked -->
+                    <video id="aboutUsVideo" width="100%" style="display:none;" controls>
+                        <source src="img/About-Us.Vid.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+
+                    <!-- Play button centered -->
+                    <a href="#" class="play-btn" 
+                       style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+                              font-size:50px; color:white; text-decoration:none; z-index:2;"
+                       onclick="document.getElementById('aboutUsVideo').style.display='block'; this.style.display='none'; return false;">
+                        <i class="fa fa-caret-right"></i>
+                    </a>
                 </div>
-                <div class="col-lg-6 p-0">
-                    <div class="about-text">
-                        <div class="section-title">
-                            <span>About Us</span>
-                            <h2>What we have done</h2>
-                        </div>
-                        <div class="at-desc">
-                            <p> Our FitroniX fitness website provides a modern, user-friendly platform designed to inspire and support fitness enthusiasts.
-                                 With easy navigation through classes, services, team information, and an interactive contact section—including a precise location map centered in Fushe-Kosov, Kosovo—users can quickly find the resources they need.
-                                  The site blends sleek design with essential features like class schedules, BMI calculation tools, and social connectivity, fostering a motivated fitness community and encouraging a healthier lifestyle.
-                            
-                                
-                            
-                                </p>
-                        </div>
-                        <div class="about-bar">
-                            <div class="ab-item">
-                                <p>Body building</p>
-                                <div id="bar1" class="barfiller">
-                                    <span class="fill" data-percentage="80"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
+            </div>
+
+            <!-- Right Side: Text Section -->
+            <div class="col-lg-6 p-0">
+                <div class="about-text">
+                    <div class="section-title">
+                        <span>About Us</span>
+                        <h2>What we have done</h2>
+                    </div>
+                    <div class="at-desc">
+                        <p>
+                            Our FitroniX fitness website provides a modern, user-friendly platform designed to inspire and support fitness enthusiasts.
+                            With easy navigation through classes, services, team information, and an interactive contact section—including a precise location map centered in Fushe-Kosov, Kosovo—users can quickly find the resources they need.
+                            The site blends sleek design with essential features like class schedules, BMI calculation tools, and social connectivity, fostering a motivated fitness community and encouraging a healthier lifestyle.
+                        </p>
+                    </div>
+
+                    <div class="about-bar">
+                        <div class="ab-item">
+                            <p>Body building</p>
+                            <div id="bar1" class="barfiller">
+                                <span class="fill" data-percentage="80"></span>
+                                <div class="tipWrap"><span class="tip"></span></div>
                             </div>
-                            <div class="ab-item">
-                                <p>Training</p>
-                                <div id="bar2" class="barfiller">
-                                    <span class="fill" data-percentage="85"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="ab-item">
+                            <p>Training</p>
+                            <div id="bar2" class="barfiller">
+                                <span class="fill" data-percentage="85"></span>
+                                <div class="tipWrap"><span class="tip"></span></div>
                             </div>
-                            <div class="ab-item">
-                                <p>Fitness</p>
-                                <div id="bar3" class="barfiller">
-                                    <span class="fill" data-percentage="75"></span>
-                                    <div class="tipWrap">
-                                        <span class="tip"></span>
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="ab-item">
+                            <p>Fitness</p>
+                            <div id="bar3" class="barfiller">
+                                <span class="fill" data-percentage="75"></span>
+                                <div class="tipWrap"><span class="tip"></span></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- About US Section End -->
+    </div>
+</section>
+<!-- About US Section End -->
+
 
     <!-- Team Section Begin -->
     <section class="team-section spad">
